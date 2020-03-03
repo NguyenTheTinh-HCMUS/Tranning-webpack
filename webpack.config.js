@@ -15,6 +15,10 @@ const VENDOR_LIBS=[
 
 
 ]
+const devServer={
+  port: 4040,
+  open: true
+}
 const config = {
   entry: {
     
@@ -41,12 +45,6 @@ const config = {
   },
   mode: "development",
   plugins:[
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor',
-    
-    //   minChunks: Infinity,
-     
-    // })
     new webpack.ProvidePlugin({
       $:"jquery",
       jQuery:"jquery"
@@ -66,6 +64,8 @@ const config = {
       }
     }
   }
+  ,
+  devServer
 };
 
 

@@ -6,6 +6,7 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 class App extends Component {
     render() {
+        console.log('abc')
         return (
             <Router>
                 <div>

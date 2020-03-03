@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack=require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VENDOR_LIBS=[
   'axios',
   'bootstrap',
@@ -22,7 +23,7 @@ const config = {
   
   },
   output: {
-    filename: "[name].js",
+    filename: "[name].[chunkhash].js",
     path: path.join(__dirname, "dist")
   },
   module: {
@@ -49,6 +50,9 @@ const config = {
     new webpack.ProvidePlugin({
       $:"jquery",
       jQuery:"jquery"
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
     })
   ],
   optimization: {

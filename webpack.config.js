@@ -4,16 +4,17 @@ const config = {
   entry: "./src/index.js",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "build")
+    path: path.join(__dirname, "dist")
   },
   module: {
     rules: [
       {
         use: "babel-loader",
-        test: /\.js$/
+        test: /\.js$/,
+        exclude: '/node_modules'
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
       }
     ]

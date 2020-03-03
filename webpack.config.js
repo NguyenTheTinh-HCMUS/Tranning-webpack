@@ -1,5 +1,5 @@
 const path = require("path");
-
+const webpack=require('webpack')
 const VENDOR_LIBS=[
   'axios',
   'bootstrap',
@@ -38,7 +38,30 @@ const config = {
       }
     ]
   },
-  mode: "development"
+  mode: "development",
+  plugins:[
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    
+    //   minChunks: Infinity,
+     
+    // })
+    new webpack.ProvidePlugin({
+      $:"jquery",
+      jQuery:"jquery"
+    })
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: 'vendor',
+          chunks: 'initial',
+          minChunks: 2
+        }
+      }
+    }
+  }
 };
 
 
